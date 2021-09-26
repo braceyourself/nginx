@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  nginx:
+    build:
+      context: ./
+      args:
+        WWWUSER: 1000
+        WWWGROUP: 1000
+    volumes:
+      - ./nginx.conf:/etc/nginx/templates/default.conf.template
+    labels:
+      - "traefik.enable=$TRAEFIK_ENABLE"
+      - "traefik.http.routers.$TRAEFIK_NGINX_ROUTER.rule=Host(`$TRAEFIK_DOMAIN_NAME`)"
+      - "traefik.backend=$TRAEFIK_BACKEND.test"
+      - "traefik.frontend.rule=Host:$TRAEFIK_DOMAIN_NAME"
+      - "traefik.docker.network=$TRAEFIK_NETWORK_NAME"
+
+      
+
