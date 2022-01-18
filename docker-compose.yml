@@ -11,7 +11,7 @@ services:
     labels:
       - "traefik.enable=$TRAEFIK_ENABLE"
       - "traefik.http.routers.$TRAEFIK_NGINX_ROUTER.rule=Host(`$TRAEFIK_DOMAIN_NAME`)"
-      - "traefik.backend=$TRAEFIK_BACKEND.test"
+      - "traefik.backend=$TRAEFIK_BACKEND.localhost"
       - "traefik.frontend.rule=Host:$TRAEFIK_DOMAIN_NAME"
       - "traefik.docker.network=$TRAEFIK_NETWORK_NAME"
 
